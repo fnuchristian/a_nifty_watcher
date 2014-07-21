@@ -3,7 +3,7 @@ This is a node file watcher that watches files in its root folder. A changed fil
 
 #How to use
 1. Clone this repo
-2. 'cd' into the root directory and do `npm install`
+2. `cd` into the root directory and do `npm install`
 3. To run, use `node app.js`, this will watch every file in app.js current root folder
 4.  Open a browser, go to your ip address, port 1234. You can look at your ip address by typing `/sbin/ifconfig` in your terminal.  Go to your browser and type, for example: 'http://192.168.1.245:1234'
 5. Try changing a file.  For example, change file1.txt
