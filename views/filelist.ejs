@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>A Nifty Watcher</title>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name='viewport' content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+  </head>
+  <body>
+    <ul class='nav nav-tabs' id='filetabs'>
+      <% files.forEach(function(fileObj) { %>
+      <li><a id="<%= fileObj.id %>-link" href="#<%= fileObj.id %>"><%= fileObj.filename %></a></li>
+      <% }) %>
+    </ul>
+    <div class='tab-content'>
+      <% files.forEach(function(fileObj) { %>
+      <div class='tab-pane' id="<%= fileObj.id %>">
+        <pre><%= fileObj.data %></pre>
+      </div>
+      <% }) %>
+    </div>
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.js"></script>
+    <script src="http://netdna.bootstrapcdn.com/bootstrap/3.0.3/js/bootstrap.min.js"></script>
+    <script>
+      $('.nav-tabs a').on('click', function(el) {
+        $(this).tab('show');
+        window.scrollTo(0, 0);
+      });
+
+      $(document).ready(function() {
+        if (window.location.hash) {
+          $("a" + window.location.hash + "-link").tab('show');
+        } else {
+          $('.nav-tabs a').first().tab('show');
+        }
+      });
+    </script>
+    <script src='/socket.io/socket.io.js'></script>
+    <script>
+      /*
+      load the socket.io library above, then connect to the server
+      because the socket.io server is being run on the same server as
+      your express instance, you can connect() without any additional information
+      */
+      var socket = io.connect(); // TIP: .connect without no args does auto-discovery
+
+      // when 'filechanged' events are fired, take our fileObj object and do something with it
+      socket.on('filechanged', function(fileObj) {
+        window.location.reload();
+      });
+    </script>
+  </body>
+</html>
