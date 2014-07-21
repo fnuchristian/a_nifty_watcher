@@ -32,4 +32,4 @@ This watcher is not recursive.  Meaning, it will not watch files inside subfolde
 
 ##Features to add in the future
 * Integrate JSDiff (https://github.com/kpdecker/jsdiff) to show changes instead of just refresh the page
-* Use the ACE (http://ace.c9.io/#nav=about) editor to show the code with highlighting instead of just in <pre> tags
+* Use the ACE (http://ace.c9.io/#nav=about) editor to show the code with highlighting instead of just in pre tags
