@@ -12,7 +12,7 @@ This is a node file watcher that watches files in its root folder. A changed fil
 ###Technologies
 ####JavaScript
 * jQuery
-* Socket.io
+* Socket.io ==> to push realtime update
 
 ##### Node
 * Express
